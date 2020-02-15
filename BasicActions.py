@@ -4,6 +4,7 @@ from selenium.webdriver.support.ui import WebDriverWait
 
 
 def wait_element(driver, xpath):
+    # obsluga czekania na widocznosc elementu po xpath
     try:
         WebDriverWait(driver, 10).until(
             EC.visibility_of_element_located((By.XPATH, xpath))
