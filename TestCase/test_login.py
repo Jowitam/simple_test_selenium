@@ -28,8 +28,8 @@ class TestLogin(TestCaseSetup):
             self.fail("Brak przycisku")
         login_page.button_login.click()
 
-        self.assertTrue(self.driver.find_element_by_xpath(LoginPageLocators.MESSAGE_wrong_email).text,
-                        data.text_massege_email)
+        self.assertEqual(self.driver.find_element_by_xpath(LoginPageLocators.MESSAGE_wrong_email).text,
+                         data.text_massege_email, "Incorrect message in the absence of an email")
 
-        self.assertTrue(self.driver.find_element_by_xpath(LoginPageLocators.MESSAGE_wrong_password).text,
-                        data.text_massege_password)
+        self.assertEqual(self.driver.find_element_by_xpath(LoginPageLocators.MESSAGE_wrong_password).text,
+                         data.text_massege_password, "Incorrect message in the absence of a password")
