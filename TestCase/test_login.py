@@ -1,14 +1,14 @@
+import TestData.login_data as data
 from Locators.LoginPageLocators import LoginPageLocators
 from PageObjects.LoginPageObjects import LoginPageObjects
 from PageObjects.StartPageObjects import StartPageObject
-from TastCaseSetup import TestCaseSetup
+from TestCaseSetup import TestCaseSetup
 
 
 class TestLogin(TestCaseSetup):
     ALLEGRO_URL = "https://allegro.pl.allegrosandbox.pl/"
-    text_massege_email = "Podaj login lub e-mail"
 
-    def test_button_login_exist(self):
+    def test_correct_messages_when_logging_in_without_login_password(self):
         self.driver.get(self.ALLEGRO_URL)
 
         form = StartPageObject(self.driver)
@@ -29,4 +29,7 @@ class TestLogin(TestCaseSetup):
         login_page.button_login.click()
 
         self.assertTrue(self.driver.find_element_by_xpath(LoginPageLocators.MESSAGE_wrong_email).text,
-                        self.text_massege_email)
+                        data.text_massege_email)
+
+        self.assertTrue(self.driver.find_element_by_xpath(LoginPageLocators.MESSAGE_wrong_password).text,
+                        data.text_massege_password)

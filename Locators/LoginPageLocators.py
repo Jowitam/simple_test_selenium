@@ -5,3 +5,4 @@ class LoginPageLocators(object):
     BUTTON_login = CONTAINER_login + "//button[@id='login-button']"
 
     MESSAGE_wrong_email = CONTAINER_login + "//div[@id='wrong-login-message']//span"
+    MESSAGE_wrong_password = CONTAINER_login + "//div[@id='wrong-password-message']//span"
